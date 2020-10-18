@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Root page
+
+Route::get('/', [PageController::class, 'indexPage']);
+
+// Question page
+
+Route::get('/question/{id}', [PageController::class, 'questionPage']);
+
