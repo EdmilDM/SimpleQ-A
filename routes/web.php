@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\AnswersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +17,18 @@ use App\Http\Controllers\PageController;
 |
 */
 
-// Root page
+// Root page with list of questions
 
-Route::get('/', [PageController::class, 'indexPage']);
+Route::get('/', [PagesController::class, 'indexPage']);
 
-// Question page
+// Single question page
 
-Route::get('/question/{id}', [PageController::class, 'questionPage']);
+Route::get('/question/{id}', [PagesController::class, 'questionPage']);
 
+// Insert question route
+
+Route::post('/question/add', [QuestionsController::class, 'insertQuestion']);
+
+// Insert answer to a question route
+
+Route::post('/question/{id}/answer', [AnswersController::class, 'insertAnswer']);
